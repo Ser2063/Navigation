@@ -28,12 +28,12 @@ class InfoViewController: UIViewController {
 
     @objc func tap(){
 
-        let myAlert = UIAlertController(title: "Это пиздец", message: "Шел третий день, как я начал делать эту ебливую домашнюю задачу 1.3 по недолекциям от нетологии по их говно ТЗ, ютуб мне в помощь. Нетологии гореть в аду?", preferredStyle: .alert)
+        let myAlert = UIAlertController(title: "Это пиздец", message: "Шел третий день, как я начал делать эту домашнюю задачу 1.3 по лекциям от нетологии по их ТЗ, ютуб мне в помощь. Смогу ли я справиться?", preferredStyle: .alert)
 
-        let cancelAction = UIAlertAction(title: "Сжечь", style: .cancel, handler: {_ in print("cancel")})
+        let cancelAction = UIAlertAction(title: "Смогу", style: .cancel, handler: {_ in print("cancel")})
         myAlert.addAction(cancelAction)
 
-        let deleteAction = UIAlertAction(title: "Да сжечь", style: .destructive, handler: {_ in
+        let deleteAction = UIAlertAction(title: "Да смогу", style: .destructive, handler: {_ in
             self.dismiss(animated: true, completion: nil)
             self.navigationController?.popViewController(animated: true)
         })

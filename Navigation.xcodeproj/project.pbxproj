@@ -44,6 +44,8 @@
 		085904C827FB431300D7B38F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				084FDA1A27E66F02005E3105 /* FeedViewController.swift */,
+				084FDA1C27E66F22005E3105 /* ProfileViewController.swift */,
 				084FDA2027E66FF1005E3105 /* PostViewController.swift */,
 			);
 			name = Controllers;
@@ -70,8 +72,6 @@
 			children = (
 				0885BBD927E4CC8800AAA9F8 /* AppDelegate.swift */,
 				0885BBDB27E4CC8800AAA9F8 /* SceneDelegate.swift */,
-				084FDA1A27E66F02005E3105 /* FeedViewController.swift */,
-				084FDA1C27E66F22005E3105 /* ProfileViewController.swift */,
 				085904C827FB431300D7B38F /* Controllers */,
 				084FDA2227E67009005E3105 /* InfoViewController.swift */,
 				0885BBE227E4CC8A00AAA9F8 /* Assets.xcassets */,

@@ -10,11 +10,23 @@ import UIKit
 class PostViewController: UIViewController {
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = .green
-        // Do any additional setup after loading the view.
+    super.viewDidLoad()
+
+              //  self.view.backgroundColor = .lightGray
+               // self.navigationItem.title = "Мой пост"
+        mySetupView()
+            }
+
+
+
+    private func mySetupView() {
+            self.view.backgroundColor = .lightGray
+            self.navigationItem.title = "Мой пост"
+        // self.navigationController?.navigationBar.prefersLargeTitles = true
+        // self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Add")
+
     }
-    
+
 
     /*
     // MARK: - Navigation

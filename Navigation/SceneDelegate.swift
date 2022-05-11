@@ -11,7 +11,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else { return }
 
@@ -47,7 +46,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
         // создаем UINavigationController - это белая полоска сверху экрана ниже челки
-          let myFeedNavVC = UINavigationController(rootViewController: myFeedVC)
+        let myFeedNavVC = UINavigationController(rootViewController: myFeedVC)
         //  myFeedNavVC.navigationBar.backgroundColor = UIColor(white: 1, alpha: 0.5)
         let myProfileNavVC = UINavigationController(rootViewController: myProfileVC)
         //myProfileNavVC.navigationBar.backgroundColor = UIColor(white: 1, alpha: 0.5)

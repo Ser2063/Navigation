@@ -16,15 +16,15 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
 
         mySetupButton()
-    
+
     }
     // Создаем в FeedViewController кнопу перехода на PostViewController
     private lazy var myPostButton: UIButton = {
 
-            let myPostButton = UIButton()
-//Методом backgroundColor задаем ей цвет.
+        let myPostButton = UIButton()
+        //Методом backgroundColor задаем ей цвет.
         myPostButton.backgroundColor = .blue
-//cornerRadius позволит нам скруглить углы и сделать ее более красивой.
+        //cornerRadius позволит нам скруглить углы и сделать ее более красивой.
         myPostButton.layer.cornerRadius = 12
         //Так же создадим внутри кнопки текст для ее нормального состояния setTitle() и зададим тексту цвет setTitleColor(), если есть желание можем поменять размер и толщину шрифта titleLabel?.font
         myPostButton.setTitle("Перейти на пост", for: .normal)
@@ -36,41 +36,41 @@ class FeedViewController: UIViewController {
         myPostButton.translatesAutoresizingMaskIntoConstraints = false
 
         //возвращаем кнопку
-            return myPostButton
+        return myPostButton
 
     }()
 
     private func mySetupButton() {
-            //добавляем нашу кнопку непосредственно на FeedViewController с верстой на экране
-            self.view.addSubview(self.myPostButton)
-            //верстка (позиционирование) кнопки на экране
-            self.myPostButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true
-            self.myPostButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
-            self.myPostButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
-            self.myPostButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        //добавляем нашу кнопку непосредственно на FeedViewController с верстой на экране
+        self.view.addSubview(self.myPostButton)
+        //верстка (позиционирование) кнопки на экране
+        self.myPostButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -100).isActive = true
+        self.myPostButton.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 20).isActive = true
+        self.myPostButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -20).isActive = true
+        self.myPostButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
 
-        }
+    }
     // пишем метод который содержит логику действия после нажатия по кнопке
 
     @objc private func myButtonAction() {
 
-            let myPostViewController = PostViewController()
+        let myPostViewController = PostViewController()
         //переходим в PostViewController обычным способом через navigationController
-            self.navigationController?.pushViewController(myPostViewController, animated: true)
-         //внутри метода buttonAction() присваиваем переменной titlePost значение переменной post
-           myPostViewController.myTitlePost = post.title
+        self.navigationController?.pushViewController(myPostViewController, animated: true)
+        //внутри метода buttonAction() присваиваем переменной titlePost значение переменной post
+        myPostViewController.myTitlePost = post.title
 
-        }
     }
+}
 
 
-    /*
-    // MARK: - Navigation
+/*
+ // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+ // Get the new view controller using segue.destination.
+ // Pass the selected object to the new view controller.
+ }
+ */
 

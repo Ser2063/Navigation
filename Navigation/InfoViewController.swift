@@ -26,7 +26,7 @@ class InfoViewController: UIViewController {
         //присваиваем кнопке действие 1) указываем себя 2) прописываем селектор  это созданная нами нижн функция 3)указываем действие нажали и отпустили
         myButton.addTarget(self, action: #selector(myTapAction), for: .touchUpInside)
 
-     // выводим кнопку на вьюху
+        // выводим кнопку на вьюху
         view.addSubview(myButton)
     }
 
@@ -48,13 +48,13 @@ class InfoViewController: UIViewController {
         present(myAlert, animated: true, completion: nil)
     }
     /*
-    // MARK: - Navigation
+     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
 
 }

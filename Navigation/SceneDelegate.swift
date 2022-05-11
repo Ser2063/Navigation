@@ -41,8 +41,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         myPostVC.title = "Post"
 
         //добавляем кнопки для отображения на таб баре
-      myFeedVC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "list.dash.header.rectangle"), selectedImage: UIImage(systemName: "list.dash.header.rectangle"))
-      myProfileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
+        myFeedVC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "list.dash.header.rectangle"), selectedImage: UIImage(systemName: "list.dash.header.rectangle"))
+        myProfileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
 
 
         // создаем UINavigationController - это белая полоска сверху экрана ниже челки
@@ -53,10 +53,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
 
-          let navigationBarAppearance = UINavigationBarAppearance()
-            navigationBarAppearance.configureWithOpaqueBackground()
-            navigationBarAppearance.backgroundColor = .secondarySystemBackground.withAlphaComponent(0.5)
-            UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithOpaqueBackground()
+        navigationBarAppearance.backgroundColor = .secondarySystemBackground.withAlphaComponent(0.5)
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
 
 
         // запихиваем в таб бар в виде массива эти кнопки

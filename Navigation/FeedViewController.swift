@@ -9,6 +9,9 @@ import UIKit
 
 class FeedViewController: UIViewController {
 
+    //создал объект типа Post в FeedViewController для передачи его в PostViewController
+    var post = Post(title: "My post 1")
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,7 +55,10 @@ class FeedViewController: UIViewController {
     @objc private func myButtonAction() {
 
             let myPostViewController = PostViewController()
+        //переходим в PostViewController обычным способом через navigationController
             self.navigationController?.pushViewController(myPostViewController, animated: true)
+         //внутри метода buttonAction() присваиваем переменной titlePost значение переменной post
+           myPostViewController.myTitlePost = post.title
 
         }
     }

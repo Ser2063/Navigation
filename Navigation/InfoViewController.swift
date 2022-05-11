@@ -11,25 +11,31 @@ class InfoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.view.backgroundColor = .green
+
+
+        
         // создаем кнопку
         let myButton = UIButton(frame: CGRect(x: 100, y: 300, width: 150, height: 50))
+
         //делаем ее дизайн
         myButton.setTitle("Press me", for: .normal)
         myButton.backgroundColor = .red
 
-        //присваиваем кнопке действие 1) указываем себя 2) прописываем селектор  это созданная нами нижн функция 3)указываем действие  нажали и отпустили
-        myButton.addTarget(self, action: #selector(tap), for: .touchUpInside)
-
-
+        //присваиваем кнопке действие 1) указываем себя 2) прописываем селектор  это созданная нами нижн функция 3)указываем действие нажали и отпустили
+        myButton.addTarget(self, action: #selector(myTapAction), for: .touchUpInside)
 
      // выводим кнопку на вьюху
         view.addSubview(myButton)
     }
 
-    @objc func tap(){
+    // пишем логику метода который указали в селекторе у кнопки
+    @objc func myTapAction(){
 
-        let myAlert = UIAlertController(title: "Это пиздец", message: "Шел третий день, как я начал делать эту домашнюю задачу 1.3 по лекциям от нетологии по их ТЗ, ютуб мне в помощь. Смогу ли я справиться?", preferredStyle: .alert)
+        let myAlert = UIAlertController(title: "Это сложно", message: "Шел пятый день, как я начал делать эту задачу №4.3 по лекциям от Нетологии. Ютуб мне в помощь. Смогу ли я справиться?", preferredStyle: .alert)
 
+        // при нажатии кнопки печатаем информацию в консоль
         let cancelAction = UIAlertAction(title: "Смогу", style: .cancel, handler: {_ in print("cancel")})
         myAlert.addAction(cancelAction)
 

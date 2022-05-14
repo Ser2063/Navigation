@@ -33,7 +33,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let myPostVC = PostViewController()
         //вью контроллеры по умолчанию прозрачные и окно сейчас прозрачное нужно задать им цвет
         myFeedVC.view.backgroundColor = .blue
-        myProfileVC.view.backgroundColor = .red
+        myProfileVC.view.backgroundColor = .lightGray
 
         // присваиваем название вьюхам
         myFeedVC.title = "Feed"

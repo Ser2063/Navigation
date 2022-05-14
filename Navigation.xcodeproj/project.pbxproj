@@ -15,6 +15,7 @@
 		0885BBDC27E4CC8800AAA9F8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0885BBDB27E4CC8800AAA9F8 /* SceneDelegate.swift */; };
 		0885BBE327E4CC8A00AAA9F8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0885BBE227E4CC8A00AAA9F8 /* Assets.xcassets */; };
 		0885BBE627E4CC8A00AAA9F8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0885BBE427E4CC8A00AAA9F8 /* LaunchScreen.storyboard */; };
+		08AB7771282FF29F00AC361B /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08AB7770282FF29F00AC361B /* ProfileHeaderView.swift */; };
 		08EDC41D282C1CDA00997549 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08EDC41C282C1CDA00997549 /* Post.swift */; };
 /* End PBXBuildFile section */
 
@@ -29,6 +30,7 @@
 		0885BBE227E4CC8A00AAA9F8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0885BBE527E4CC8A00AAA9F8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0885BBE727E4CC8A00AAA9F8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		08AB7770282FF29F00AC361B /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 		08EDC41C282C1CDA00997549 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -47,9 +49,9 @@
 			isa = PBXGroup;
 			children = (
 				084FDA1A27E66F02005E3105 /* FeedViewController.swift */,
-				084FDA1C27E66F22005E3105 /* ProfileViewController.swift */,
 				084FDA2027E66FF1005E3105 /* PostViewController.swift */,
 				084FDA2227E67009005E3105 /* InfoViewController.swift */,
+				08AB776F282FF27000AC361B /* Profile */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -82,6 +84,15 @@
 				0885BBE727E4CC8A00AAA9F8 /* Info.plist */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		08AB776F282FF27000AC361B /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				084FDA1C27E66F22005E3105 /* ProfileViewController.swift */,
+				08AB7770282FF29F00AC361B /* ProfileHeaderView.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 		08EDC41B282C1C9400997549 /* Data */ = {
@@ -169,6 +180,7 @@
 				084FDA1B27E66F02005E3105 /* FeedViewController.swift in Sources */,
 				08EDC41D282C1CDA00997549 /* Post.swift in Sources */,
 				0885BBDC27E4CC8800AAA9F8 /* SceneDelegate.swift in Sources */,
+				08AB7771282FF29F00AC361B /* ProfileHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

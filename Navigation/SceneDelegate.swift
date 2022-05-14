@@ -11,12 +11,64 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
 
-
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let scene = (scene as? UIWindowScene) else { return }
+
+        //сделал окно в котором телефон отрисует программу
+        window = UIWindow(windowScene: scene)
+        // делаем окно ключевым и видимым
+        window?.makeKeyAndVisible()
+
+        //создаем UITapBar
+
+        let myTabBarController = UITabBarController()
+        UITabBar.appearance().backgroundColor = .secondarySystemBackground
+        UITabBar.appearance().alpha = 0.9
+
+        //myTabBarController.tabBar.isTranslucent = false
+
+        //объявляем вью контроллеры для каждой из будущих кнопок на таб баре в виде констант. Сколько кнопок будет на таб баре столько же нужно и констант с вью контроллерами
+        let myFeedVC = FeedViewController()
+        let myProfileVC = ProfileViewController()
+        let myPostVC = PostViewController()
+        //вью контроллеры по умолчанию прозрачные и окно сейчас прозрачное нужно задать им цвет
+        myFeedVC.view.backgroundColor = .blue
+        myProfileVC.view.backgroundColor = .red
+
+        // присваиваем название вьюхам
+        myFeedVC.title = "Feed"
+        myProfileVC.title = "Profile"
+        myPostVC.title = "Post"
+
+        //добавляем кнопки для отображения на таб баре
+        myFeedVC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "list.dash.header.rectangle"), selectedImage: UIImage(systemName: "list.dash.header.rectangle"))
+        myProfileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
+
+
+        // создаем UINavigationController - это белая полоска сверху экрана ниже челки
+        let myFeedNavVC = UINavigationController(rootViewController: myFeedVC)
+        //  myFeedNavVC.navigationBar.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        let myProfileNavVC = UINavigationController(rootViewController: myProfileVC)
+        //myProfileNavVC.navigationBar.backgroundColor = UIColor(white: 1, alpha: 0.5)
+
+
+
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithOpaqueBackground()
+        navigationBarAppearance.backgroundColor = .secondarySystemBackground.withAlphaComponent(0.5)
+        UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
+
+
+        // запихиваем в таб бар в виде массива эти кнопки
+        myTabBarController.viewControllers = [myFeedNavVC, myProfileNavVC]
+
+
+        // запихиваем в таб бар в виде массива эти кнопки
+        //   myTabBarController.viewControllers = [myFeedVC, myProfileVC]
+
+        //присваеваем рут вью контроллер и запихиваем в него тап бар
+        window?.rootViewController = myTabBarController
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

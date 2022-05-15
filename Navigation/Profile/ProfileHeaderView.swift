@@ -7,7 +7,31 @@
 
 import UIKit
 
+
+
 class ProfileHeaderView: UIView {
+
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+class ProfileHeaderView: UIView {
+
 
     // объявляем пременные для объектов профиля
     var myUserAvatar: UIImageView!
@@ -184,3 +208,4 @@ class ProfileHeaderView: UIView {
 
 
 }
+     */

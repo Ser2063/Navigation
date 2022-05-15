@@ -7,6 +7,43 @@
 
 import UIKit
 
+class ProfileViewController: UIViewController {
+
+    private let avatarImageView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .red
+        view.translatesAutoresizingMaskIntoConstraints = false
+
+        return view
+    }()
+
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        avatarImageViewLayout()
+
+    }
+
+    private func avatarImageViewLayout() {
+
+        view.addSubview(avatarImageView)
+
+        NSLayoutConstraint.activate([
+            avatarImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+            avatarImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 200),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 200)
+        ])
+        
+    }
+
+}
+
+
+
+
+/*
 class ProfileViewController: UIViewController, UITextFieldDelegate {
 
     let profileHeaderView = ProfileHeaderView()
@@ -53,3 +90,4 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     }
 
 }
+*/

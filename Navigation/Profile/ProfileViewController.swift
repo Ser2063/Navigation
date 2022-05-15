@@ -8,86 +8,91 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
-    private let avatarImageView: UIView = {
-        let view = UIView()
-        view.backgroundColor = .red
+    
+    private lazy var profileHeaderView: ProfileHeaderView = {
+        let view = ProfileHeaderView(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-
         return view
     }()
-
-
+    
+    private lazy var secondButton: UIButton = {
+        let secondButton = UIButton()
+        secondButton.translatesAutoresizingMaskIntoConstraints = false
+        secondButton.setTitle("Set title", for: .normal)
+        secondButton.setTitleColor(.white, for: .normal)
+        secondButton.backgroundColor = .blue
+        secondButton.layer.cornerRadius = 4
+        secondButton.layer.shadowOffset.width = 4
+        secondButton.layer.shadowOffset.height = 4
+        secondButton.layer.shadowRadius = 4
+        secondButton.layer.shadowColor = UIColor.black.cgColor
+        secondButton.layer.shadowOpacity = 0.7
+        secondButton.addTarget(self, action: #selector(tapSecondButton), for: .touchUpInside)
+        return secondButton
+    }()
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        avatarImageViewLayout()
-
-    }
-
-    private func avatarImageViewLayout() {
-
-        view.addSubview(avatarImageView)
-
-        NSLayoutConstraint.activate([
-            avatarImageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-            avatarImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 200),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 200)
-        ])
+        
+        profileHeaderViewSetup()
+        secondButtonAction()
         
     }
-
-}
-
-
-
-
-/*
-class ProfileViewController: UIViewController, UITextFieldDelegate {
-
-    let profileHeaderView = ProfileHeaderView()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        //выводим на супервью profileHeaderView
-        view.addSubview(profileHeaderView)
-        profileHeaderView.myStatusTextField.delegate = self
-
-    }
-
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-
-        profileHeaderViewSetup()
-    }
-
+    
+    private var heightConstraint: NSLayoutConstraint?
+    
     private func profileHeaderViewSetup() {
-
-        profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        view.addSubview(profileHeaderView)
+        
+        heightConstraint = self.profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
+        
         NSLayoutConstraint.activate([
-            profileHeaderView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            profileHeaderView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            profileHeaderView.widthAnchor.constraint(equalTo: self.view.widthAnchor),
-            profileHeaderView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            profileHeaderView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor)
+            profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            profileHeaderView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            profileHeaderView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            heightConstraint
+        ].compactMap({$0}))
+    }
+    
+    private func secondButtonAction () {
+        
+        view.addSubview(secondButton)
+        
+        NSLayoutConstraint.activate([
+            
+            secondButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            secondButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor , constant: 20),
+            secondButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
+            secondButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
-
+    
+    @objc func tapSecondButton() {
+        let i = UIAlertController(title: "Установить заголовок", message: "Введите заголовок", preferredStyle: .alert)
+        i.addTextField()
+        
+        let ok = UIAlertAction(title: "Ok", style: .default) { [weak self, weak i] _ in
+            guard let newTitle = i?.textFields?[0].text else {return}
+            if newTitle.isEmpty {
+                let i = UIAlertController(title: "Вы не ввели текст", message: nil, preferredStyle: .alert)
+                let ok = UIAlertAction(title: "Ok", style: .default, handler: nil)
+                i.addAction(ok)
+                self?.present(i, animated: true)
+            }
+            self?.profileHeaderView.changeTitle(title: newTitle)
+        }
+        i.addAction(ok)
+        
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        i.addAction(cancel)
+        present(i, animated: true)
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
-    // отображение клавиатуры
-    func hideKeyboard() {
-        profileHeaderView.myStatusTextField.resignFirstResponder()
-    }
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        hideKeyboard()
-        return true
-    }
-
+    
 }
-*/

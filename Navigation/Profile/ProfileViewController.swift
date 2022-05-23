@@ -10,9 +10,9 @@ import UIKit
 class ProfileViewController: UIViewController {
     
     private lazy var profileHeaderView: ProfileHeaderView = {
-        let view = ProfileHeaderView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+        let profileHeaderView = ProfileHeaderView(frame: .zero)
+        profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
+        return profileHeaderView
     }()
     
     private lazy var secondButton: UIButton = {
@@ -28,41 +28,28 @@ class ProfileViewController: UIViewController {
         secondButton.layer.shadowColor = UIColor.black.cgColor
         secondButton.layer.shadowOpacity = 0.7
         secondButton.addTarget(self, action: #selector(tapSecondButton), for: .touchUpInside)
-        return secondButton
+     return secondButton
     }()
     
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         profileHeaderViewSetup()
-        secondButtonAction()
-        
     }
     
-    private var heightConstraint: NSLayoutConstraint?
-    
+
     private func profileHeaderViewSetup() {
-        view.backgroundColor = .white
+        view.backgroundColor = .lightGray
         view.addSubview(profileHeaderView)
-        
-        heightConstraint = self.profileHeaderView.heightAnchor.constraint(equalToConstant: 220)
-        
-        NSLayoutConstraint.activate([
-            profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            profileHeaderView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            profileHeaderView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            heightConstraint
-        ].compactMap({$0}))
-    }
-    
-    private func secondButtonAction () {
-        
         view.addSubview(secondButton)
         
         NSLayoutConstraint.activate([
-            
+          profileHeaderView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+          profileHeaderView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+          profileHeaderView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+          profileHeaderView.heightAnchor.constraint(equalToConstant: 220),
+
             secondButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             secondButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor , constant: 20),
             secondButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
@@ -82,17 +69,17 @@ class ProfileViewController: UIViewController {
                 i.addAction(ok)
                 self?.present(i, animated: true)
             }
-            self?.profileHeaderView.changeTitle(title: newTitle)
         }
         i.addAction(ok)
+
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         i.addAction(cancel)
         present(i, animated: true)
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.view.endEditing(true)
-    }
+ //   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+ //       self.view.endEditing(true)
+ //   }
     
 }

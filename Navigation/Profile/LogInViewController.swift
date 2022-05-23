@@ -9,11 +9,12 @@ import UIKit
 
 class LogInViewController: UIViewController {
 
+    private let nc = NotificationCenter.default  //клавиатура
 
     private lazy var myScrollView: UIScrollView = {
         let myScrollView = UIScrollView()
         myScrollView.translatesAutoresizingMaskIntoConstraints = false
-        myScrollView.backgroundColor = .red
+        //myScrollView.backgroundColor = .red
         return myScrollView
     }()
 
@@ -56,6 +57,7 @@ class LogInViewController: UIViewController {
         myLogTextField.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: myLogTextField.frame.height))
         myLogTextField.leftViewMode = .always
         myLogTextField.layer.borderColor = UIColor.lightGray.cgColor
+        myLogTextField.delegate = self // чтобы клавиатура убиралась делаем делегата и внизу под классом делаем экстеншн и еще пишем прайвал лэйзи вар
         return myLogTextField
     }()
 
@@ -72,6 +74,7 @@ class LogInViewController: UIViewController {
         myPassTextField.leftView = UIView(frame: CGRect(x: 0, y: 10, width: 10, height: myPassTextField.frame.height))
         myPassTextField.leftViewMode = .always
         myPassTextField.layer.borderColor = UIColor.lightGray.cgColor
+        myPassTextField.delegate = self
         return myPassTextField
     }()
 
@@ -92,6 +95,36 @@ class LogInViewController: UIViewController {
 
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        nc.addObserver(self, selector: #selector(kbdShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        nc.addObserver(self, selector: #selector(kbdHide), name: UIResponder.keyboardDidHideNotification, object: nil)
+
+    }
+
+    override func viewDidDisappear (_ animated: Bool) {
+        super.viewWillAppear(animated)
+        nc.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        nc.removeObserver(self, name: UIResponder.keyboardDidHideNotification, object: nil)
+    }
+
+
+    @objc private func kbdShow(notification: NSNotification){
+        if let kbdSize =
+            (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as?
+             NSValue)?.cgRectValue {
+            myScrollView.contentInset.bottom = kbdSize.height
+            myScrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: kbdSize.height, right: 0)
+
+        }
+
+    }
+
+    @objc private func kbdHide(notification: NSNotification){
+        myScrollView.contentInset.bottom = .zero
+        myScrollView.verticalScrollIndicatorInsets = .zero
+
+    }
     private func addingElementsIntoSubviews() {
 
         view.addSubview(myScrollView)
@@ -143,6 +176,12 @@ class LogInViewController: UIViewController {
     }
 
 
-
 }
+// для клавиатуры чтоб она убиралась
+extension LogInViewController: UITextFieldDelegate {
 
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        view.endEditing(true)
+        return true
+    }
+}

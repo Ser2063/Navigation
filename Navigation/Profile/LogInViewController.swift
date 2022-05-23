@@ -25,7 +25,7 @@ class LogInViewController: UIViewController {
     }()
 
     private lazy var myLogoImageView: UIImageView = {
-        let myLogoImageView = UIImageView(image: UIImage(named: "Logo.png"))
+        let myLogoImageView = UIImageView(image: UIImage(named: "logo.png"))
         myLogoImageView.clipsToBounds = true
         myLogoImageView.translatesAutoresizingMaskIntoConstraints = false
         return myLogoImageView
@@ -87,12 +87,13 @@ class LogInViewController: UIViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
+
         addingElementsIntoSubviews()
 
-        // Do any additional setup after loading the view.
     }
 
     private func addingElementsIntoSubviews() {
+
         view.addSubview(myScrollView)
         myScrollView.addSubview(myContentView)
         myContentView.addSubview(myLogInButton)
@@ -102,14 +103,16 @@ class LogInViewController: UIViewController {
         myLogAndPassStackView.addArrangedSubview(myPassTextField)
 
         NSLayoutConstraint.activate([
+
             myScrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            myScrollView.leftAnchor.constraint(equalTo: view.leftAnchor),
-            myScrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            myScrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            myScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             myScrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
 
             myContentView.topAnchor.constraint(equalTo: myScrollView.topAnchor),
             myContentView.bottomAnchor.constraint(equalTo: myScrollView.bottomAnchor),
-            myContentView.centerXAnchor.constraint(equalTo: myScrollView.centerXAnchor),
+            myContentView.leadingAnchor.constraint(equalTo: myScrollView.leadingAnchor),
+            myContentView.trailingAnchor.constraint(equalTo: myScrollView.trailingAnchor),
             myContentView.widthAnchor.constraint(equalTo: myScrollView.widthAnchor),
             myContentView.heightAnchor.constraint(equalTo: myScrollView.heightAnchor),
 

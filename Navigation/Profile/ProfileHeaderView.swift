@@ -120,10 +120,16 @@ class ProfileHeaderView: UIView {
 
     }
 
-    @objc func statusTextChanged() {
-        statusLabel.text = statusTextField.text
+    @objc func statusTextChanged(statusText: String) {
             if statusLabel.text == "" {
                 statusLabel.text = statusText
+            } else{
+                statusLabel.text = statusTextField.text
             }
+        print ("gggggggggggggggggggggggggggggg")
         }
+
+    func changeTitle(title: String) {
+           fullNameLabel.text = title
+       }
 }

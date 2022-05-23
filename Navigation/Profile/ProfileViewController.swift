@@ -69,6 +69,7 @@ class ProfileViewController: UIViewController {
                 i.addAction(ok)
                 self?.present(i, animated: true)
             }
+            self?.profileHeaderView.changeTitle(title: newTitle)
         }
         i.addAction(ok)
 

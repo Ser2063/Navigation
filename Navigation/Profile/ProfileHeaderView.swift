@@ -20,7 +20,7 @@ class ProfileHeaderView: UIView {
     }
 
     private var titleText: String = "Пес Корги "
-    private var statusText: String = "Waiting for something..."
+    private var statusText: String = ""
 
     private let avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()
@@ -47,7 +47,7 @@ class ProfileHeaderView: UIView {
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
         statusLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         statusLabel.textColor = .gray
-        statusLabel.text = statusText
+        statusLabel.text = "Waiting for something..."
         return statusLabel
     }()
 
@@ -61,6 +61,7 @@ class ProfileHeaderView: UIView {
         statusTextField.layer.masksToBounds = true
         statusTextField.layer.borderWidth = 1
         statusTextField.layer.borderColor = UIColor.black.cgColor
+        statusTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         return statusTextField
     }()
 
@@ -76,7 +77,7 @@ class ProfileHeaderView: UIView {
         setStatusButton.layer.shadowRadius = 4
         setStatusButton.layer.shadowColor = UIColor.black.cgColor
         setStatusButton.layer.shadowOpacity = 0.7
-        setStatusButton.addTarget(self, action: #selector(statusTextChanged), for: .touchUpInside)
+        setStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         return setStatusButton
     }()
 
@@ -117,12 +118,25 @@ class ProfileHeaderView: UIView {
     }
 
     @objc
-    private func statusTextChanged() {
-        if statusLabel.text == "" {
-            statusLabel.text = statusText
+    func statusTextChanged(statusTextField: UITextField) {
+     print(statusText)
+
+        if let status = statusTextField.text {
+            statusText = status
         } else {
-            statusLabel.text = statusTextField.text
+            statusText = ""
         }
+
+    }
+
+    @objc
+    func buttonPressed() {
+        if statusText == "" {
+            statusTextField.text = "Waiting for something..."
+        } else {
+            statusLabel.text = statusText
+        }
+
     }
 
     func changeTitle(title: String) {

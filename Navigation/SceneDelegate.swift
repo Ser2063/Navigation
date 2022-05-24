@@ -31,25 +31,28 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let myFeedVC = FeedViewController()
         let myProfileVC = ProfileViewController()
         let myPostVC = PostViewController()
+        let myLogInVC = LogInViewController()
         //вью контроллеры по умолчанию прозрачные и окно сейчас прозрачное нужно задать им цвет
         myFeedVC.view.backgroundColor = .blue
         myProfileVC.view.backgroundColor = .lightGray
-
+        myLogInVC.view.backgroundColor = .white
         // присваиваем название вьюхам
         myFeedVC.title = "Feed"
         myProfileVC.title = "Profile"
         myPostVC.title = "Post"
-
+        myLogInVC.title = "Log In"
         //добавляем кнопки для отображения на таб баре
         myFeedVC.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "list.dash.header.rectangle"), selectedImage: UIImage(systemName: "list.dash.header.rectangle"))
-        myProfileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
-
+      // myProfileVC.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
+        myLogInVC.tabBarItem = UITabBarItem(title: "Log In", image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
 
         // создаем UINavigationController - это белая полоска сверху экрана ниже челки
         let myFeedNavVC = UINavigationController(rootViewController: myFeedVC)
         //  myFeedNavVC.navigationBar.backgroundColor = UIColor(white: 1, alpha: 0.5)
-        let myProfileNavVC = UINavigationController(rootViewController: myProfileVC)
+        //let myProfileNavVC = UINavigationController(rootViewController: myProfileVC)
         //myProfileNavVC.navigationBar.backgroundColor = UIColor(white: 1, alpha: 0.5)
+        let myLogInNavVC = UINavigationController(rootViewController: myLogInVC)
+
 
 
 
@@ -57,11 +60,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         navigationBarAppearance.configureWithOpaqueBackground()
         navigationBarAppearance.backgroundColor = .secondarySystemBackground.withAlphaComponent(0.5)
         UINavigationBar.appearance().scrollEdgeAppearance = navigationBarAppearance
-
+        
 
         // запихиваем в таб бар в виде массива эти кнопки
-        myTabBarController.viewControllers = [myFeedNavVC, myProfileNavVC]
-
+        //myTabBarController.viewControllers = [myFeedNavVC, myProfileNavVC]
+        myTabBarController.viewControllers = [myFeedNavVC, myLogInNavVC]
 
         // запихиваем в таб бар в виде массива эти кнопки
         //   myTabBarController.viewControllers = [myFeedVC, myProfileVC]

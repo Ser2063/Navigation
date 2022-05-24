@@ -41,6 +41,7 @@ class ProfileViewController: UIViewController {
 
     private func profileHeaderViewSetup() {
         view.backgroundColor = .lightGray
+
         view.addSubview(profileHeaderView)
         view.addSubview(secondButton)
         
@@ -50,6 +51,7 @@ class ProfileViewController: UIViewController {
           profileHeaderView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
           profileHeaderView.heightAnchor.constraint(equalToConstant: 220),
 
+           
             secondButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             secondButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor , constant: 20),
             secondButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20),
@@ -79,8 +81,8 @@ class ProfileViewController: UIViewController {
         present(i, animated: true)
     }
     
- //   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
- //       self.view.endEditing(true)
- //   }
+   override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
 }

@@ -7,8 +7,6 @@
 
 import UIKit
 
-
-
 class ProfileHeaderView: UIView {
 
 
@@ -21,7 +19,7 @@ class ProfileHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private var titleText: String = "Корги крутые"
+    private var titleText: String = "Пес Корги "
     private var statusText: String = "Waiting for something..."
 
     private let avatarImageView: UIImageView = {
@@ -83,11 +81,11 @@ class ProfileHeaderView: UIView {
     }()
 
     func profileHeaderViewLayouts() {
+        addSubview(setStatusButton)
         addSubview(avatarImageView)
         addSubview(fullNameLabel)
         addSubview(statusLabel)
         addSubview(statusTextField)
-        addSubview(setStatusButton)
 
         NSLayoutConstraint.activate([
 
@@ -116,20 +114,18 @@ class ProfileHeaderView: UIView {
             setStatusButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -16),
             setStatusButton.heightAnchor.constraint(equalToConstant: 50)
         ])
-
-
     }
 
-    @objc func statusTextChanged(statusText: String) {
-            if statusLabel.text == "" {
-                statusLabel.text = statusText
-            } else{
-                statusLabel.text = statusTextField.text
-            }
-        print ("gggggggggggggggggggggggggggggg")
+    @objc
+    private func statusTextChanged() {
+        if statusLabel.text == "" {
+            statusLabel.text = statusText
+        } else {
+            statusLabel.text = statusTextField.text
         }
+    }
 
     func changeTitle(title: String) {
-           fullNameLabel.text = title
-       }
+        fullNameLabel.text = title
+    }
 }

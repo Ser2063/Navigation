@@ -21,6 +21,7 @@ class ProfileHeaderView: UIView {
 
     private var titleText: String = "Пес Корги "
     private var statusText: String = ""
+    private var status: String = ""
 
     private let avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()
@@ -77,7 +78,7 @@ class ProfileHeaderView: UIView {
         setStatusButton.layer.shadowRadius = 4
         setStatusButton.layer.shadowColor = UIColor.black.cgColor
         setStatusButton.layer.shadowOpacity = 0.7
-        setStatusButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+        setStatusButton.addTarget(self, action: #selector(showStatusbuttonPressed), for: .touchUpInside)
         return setStatusButton
     }()
 
@@ -117,6 +118,44 @@ class ProfileHeaderView: UIView {
         ])
     }
 
+    @objc func statusTextChanged(_ textField: UITextField) -> String {
+        if let newStatus = textField.text {
+             status = newStatus
+        }
+        return status
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+
+    @objc
+    private func showStatusbuttonPressed() {
+
+        guard statusTextField.text?.isEmpty == false else {return}
+        statusLabel.text = statusTextChanged(statusTextField)
+        self.statusTextField.text = ""
+    }
+
+
+/*
+    private func showStatusbuttonPressed() {
+        guard statusTextField.text?.isEmpty == false else {return}
+        statusLabel.text = status
+        self.statusTextField.text = ""
+
+    }
+
+    @objc func statusTextChanged(_ textField: UITextField) {
+        if let newStatus = textField.text {
+            status = newStatus
+        }
+    }
+
+*/
+
+/*
     @objc
     func statusTextChanged(statusTextField: UITextField) {
      print(statusText)
@@ -138,7 +177,7 @@ class ProfileHeaderView: UIView {
         }
 
     }
-
+*/
     func changeTitle(title: String) {
         fullNameLabel.text = title
     }

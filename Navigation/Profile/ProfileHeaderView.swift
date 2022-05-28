@@ -118,15 +118,15 @@ class ProfileHeaderView: UIView {
         ])
     }
 
-    @objc func statusTextChanged(_ textField: UITextField) -> String {
-        if let newStatus = textField.text {
-             status = newStatus
+    @objc func statusTextChanged(_ statusTextField: UITextField) -> String {
+        if let newStatus = statusTextField.text {
+            statusText = newStatus
         }
-        return status
+        return  statusText
     }
 
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+    func textFieldShouldReturn(_ statusTextField: UITextField) -> Bool {
+        statusTextField.resignFirstResponder()
         return true
     }
 

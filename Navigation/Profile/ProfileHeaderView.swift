@@ -9,7 +9,6 @@ import UIKit
 
 class ProfileHeaderView: UIView {
 
-
     override init(frame: CGRect) {
         super.init(frame: .zero)
         profileHeaderViewLayouts()
@@ -91,29 +90,29 @@ class ProfileHeaderView: UIView {
 
         NSLayoutConstraint.activate([
 
-            avatarImageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 16),
-            avatarImageView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 16),
+            avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            avatarImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             avatarImageView.widthAnchor.constraint(equalToConstant: 150),
             avatarImageView.heightAnchor.constraint(equalToConstant: 150),
 
-            fullNameLabel.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 27),
+            fullNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
             fullNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor,constant: 16),
-            fullNameLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -16),
+            fullNameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
 
             statusLabel.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: -16),
             statusLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
-            statusLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -16),
+            statusLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
 
 
             statusTextField.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: -10),
             statusTextField.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
-            statusTextField.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -16),
+            statusTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             statusTextField.widthAnchor.constraint(equalToConstant: 200),
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
 
             setStatusButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 40),
-            setStatusButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 16),
-            setStatusButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -16),
+            setStatusButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            setStatusButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             setStatusButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
@@ -139,45 +138,45 @@ class ProfileHeaderView: UIView {
     }
 
 
-/*
-    private func showStatusbuttonPressed() {
-        guard statusTextField.text?.isEmpty == false else {return}
-        statusLabel.text = status
-        self.statusTextField.text = ""
+    /*
+     private func showStatusbuttonPressed() {
+     guard statusTextField.text?.isEmpty == false else {return}
+     statusLabel.text = status
+     self.statusTextField.text = ""
 
-    }
+     }
 
-    @objc func statusTextChanged(_ textField: UITextField) {
-        if let newStatus = textField.text {
-            status = newStatus
-        }
-    }
+     @objc func statusTextChanged(_ textField: UITextField) {
+     if let newStatus = textField.text {
+     status = newStatus
+     }
+     }
 
-*/
+     */
 
-/*
-    @objc
-    func statusTextChanged(statusTextField: UITextField) {
+    /*
+     @objc
+     func statusTextChanged(statusTextField: UITextField) {
      print(statusText)
 
-        if let status = statusTextField.text {
-            statusText = status
-        } else {
-            statusText = ""
-        }
+     if let status = statusTextField.text {
+     statusText = status
+     } else {
+     statusText = ""
+     }
 
-    }
+     }
 
-    @objc
-    func buttonPressed() {
-        if statusText == "" {
-            statusTextField.text = "Waiting for something..."
-        } else {
-            statusLabel.text = statusText
-        }
+     @objc
+     func buttonPressed() {
+     if statusText == "" {
+     statusTextField.text = "Waiting for something..."
+     } else {
+     statusLabel.text = statusText
+     }
 
-    }
-*/
+     }
+     */
     func changeTitle(title: String) {
         fullNameLabel.text = title
     }

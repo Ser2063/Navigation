@@ -22,7 +22,7 @@ struct PostModel {
 }
 
 
-func dataForCells() -> [PostModel] {
+func dataForCellsModel() -> [PostModel] {
     var modelCell = [PostModel]()
     modelCell.append(PostModel(author: "Алексей", title: "Человек из стали", description: "Now Clark Kent’s Man of Steel is about Truth, Justice and a Better Tomorrow. To better reflect the storylines that we are telling across DC and to honor Superman’s incredible legacy of over 80 years of building a better world, Superman’s motto is evolving,” announced DC chief creative officer and publisher Jim Lee at the company’s. “Superman has long been a symbol of hope who inspires people, and it is that optimism and hope that powers him forward with this new mission statement.", image: UIImage(named: "man_of_steel") ?? UIImage(imageLiteralResourceName: "IMG_5935"), likes: 10, views: 11))
 

@@ -8,7 +8,11 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-    
+
+   // private let cars: [String] = ["BMW", "Lada", "Kia", "Opel", "Reno", "Skoda", "Volkswagen","BMW", "Lada", "Kia", "Opel", "Reno", "Skoda", "Volkswagen","BMW", "Lada", "Kia", "Opel", "Reno", "Skoda", "Volkswagen","BMW", "Lada", "Kia", "Opel", "Reno", "Skoda", "Volkswagen","BMW", "Lada", "Kia", "Opel", "Reno", "Skoda", "Volkswagen","BMW", "Lada", "Kia", "Opel", "Reno", "Skoda", "Volkswagen"]
+
+    let cars = PostModelData.dataForCellsModel()
+
     private lazy var profileHeaderView: ProfileHeaderView = {
         let profileHeaderView = ProfileHeaderView(frame: .zero)
         profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
@@ -47,12 +51,22 @@ class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: UITableViewDataSource {
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        10
+        cars.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+
+        //let index = IndexPath(row: <#T##Int#>, section: <#T##Int#>)
+      //  cell.textLabel?.text = cars[indexPath.row]
+
+        var content: UIListContentConfiguration = cell.defaultContentConfiguration()
+        // content.text = "Секция = \(indexPath.section), ячейка = \(indexPath.row)"
+        content.text = cars[indexPath.row]
+        cell.contentConfiguration = content
+        return cell
     }
 
 

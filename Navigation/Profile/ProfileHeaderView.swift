@@ -72,7 +72,7 @@ class ProfileHeaderView: UIView {
         setStatusButton.setTitle("Show status", for: .normal)
         setStatusButton.setTitleColor(.white, for: .normal)
         setStatusButton.backgroundColor = .blue
-        setStatusButton.layer.cornerRadius = 4
+        setStatusButton.layer.cornerRadius = 12
         setStatusButton.layer.shadowOffset.width = 4
         setStatusButton.layer.shadowOffset.height = 4
         setStatusButton.layer.shadowRadius = 4

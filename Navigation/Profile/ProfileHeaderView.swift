@@ -9,7 +9,6 @@ import UIKit
 
 class ProfileHeaderView: UIView {
 
-
     override init(frame: CGRect) {
         super.init(frame: .zero)
         profileHeaderViewLayouts()
@@ -20,7 +19,8 @@ class ProfileHeaderView: UIView {
     }
 
     private var titleText: String = "Пес Корги "
-    private var statusText: String = "Waiting for something..."
+    private var statusText: String = ""
+    private var status: String = ""
 
     private let avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()
@@ -47,7 +47,7 @@ class ProfileHeaderView: UIView {
         statusLabel.translatesAutoresizingMaskIntoConstraints = false
         statusLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
         statusLabel.textColor = .gray
-        statusLabel.text = statusText
+        statusLabel.text = "Waiting for something..."
         return statusLabel
     }()
 
@@ -61,6 +61,7 @@ class ProfileHeaderView: UIView {
         statusTextField.layer.masksToBounds = true
         statusTextField.layer.borderWidth = 1
         statusTextField.layer.borderColor = UIColor.black.cgColor
+        statusTextField.addTarget(self, action: #selector(statusTextChanged), for: .editingChanged)
         return statusTextField
     }()
 
@@ -70,13 +71,13 @@ class ProfileHeaderView: UIView {
         setStatusButton.setTitle("Show status", for: .normal)
         setStatusButton.setTitleColor(.white, for: .normal)
         setStatusButton.backgroundColor = .blue
-        setStatusButton.layer.cornerRadius = 4
+        setStatusButton.layer.cornerRadius = 12
         setStatusButton.layer.shadowOffset.width = 4
         setStatusButton.layer.shadowOffset.height = 4
         setStatusButton.layer.shadowRadius = 4
         setStatusButton.layer.shadowColor = UIColor.black.cgColor
         setStatusButton.layer.shadowOpacity = 0.7
-        setStatusButton.addTarget(self, action: #selector(statusTextChanged), for: .touchUpInside)
+        setStatusButton.addTarget(self, action: #selector(showStatusbuttonPressed), for: .touchUpInside)
         return setStatusButton
     }()
 
@@ -89,42 +90,93 @@ class ProfileHeaderView: UIView {
 
         NSLayoutConstraint.activate([
 
-            avatarImageView.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 16),
-            avatarImageView.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 16),
+            avatarImageView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16),
+            avatarImageView.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             avatarImageView.widthAnchor.constraint(equalToConstant: 150),
             avatarImageView.heightAnchor.constraint(equalToConstant: 150),
 
-            fullNameLabel.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 27),
+            fullNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
             fullNameLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor,constant: 16),
-            fullNameLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -16),
+            fullNameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
 
             statusLabel.bottomAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: -16),
             statusLabel.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
-            statusLabel.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -16),
+            statusLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
 
 
             statusTextField.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: -10),
             statusTextField.leadingAnchor.constraint(equalTo: avatarImageView.trailingAnchor, constant: 16),
-            statusTextField.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -16),
+            statusTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             statusTextField.widthAnchor.constraint(equalToConstant: 200),
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
 
             setStatusButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 40),
-            setStatusButton.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 16),
-            setStatusButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -16),
+            setStatusButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
+            setStatusButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             setStatusButton.heightAnchor.constraint(equalToConstant: 50)
         ])
     }
 
-    @objc
-    private func statusTextChanged() {
-        if statusLabel.text == "" {
-            statusLabel.text = statusText
-        } else {
-            statusLabel.text = statusTextField.text
+    @objc func statusTextChanged(_ statusTextField: UITextField) -> String {
+        if let newStatus = statusTextField.text {
+            statusText = newStatus
         }
+        return  statusText
     }
 
+    func textFieldShouldReturn(_ statusTextField: UITextField) -> Bool {
+        statusTextField.resignFirstResponder()
+        return true
+    }
+
+    @objc
+    private func showStatusbuttonPressed() {
+
+        guard statusTextField.text?.isEmpty == false else {return}
+        statusLabel.text = statusTextChanged(statusTextField)
+        self.statusTextField.text = ""
+    }
+
+
+    /*
+     private func showStatusbuttonPressed() {
+     guard statusTextField.text?.isEmpty == false else {return}
+     statusLabel.text = status
+     self.statusTextField.text = ""
+
+     }
+
+     @objc func statusTextChanged(_ textField: UITextField) {
+     if let newStatus = textField.text {
+     status = newStatus
+     }
+     }
+
+     */
+
+    /*
+     @objc
+     func statusTextChanged(statusTextField: UITextField) {
+     print(statusText)
+
+     if let status = statusTextField.text {
+     statusText = status
+     } else {
+     statusText = ""
+     }
+
+     }
+
+     @objc
+     func buttonPressed() {
+     if statusText == "" {
+     statusTextField.text = "Waiting for something..."
+     } else {
+     statusLabel.text = statusText
+     }
+
+     }
+     */
     func changeTitle(title: String) {
         fullNameLabel.text = title
     }

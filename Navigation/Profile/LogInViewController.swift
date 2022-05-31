@@ -155,7 +155,8 @@ class LogInViewController: UIViewController {
             myLogoImageView.heightAnchor.constraint(equalToConstant: 100),
             myLogoImageView.bottomAnchor.constraint(greaterThanOrEqualTo: myLogAndPassStackView.topAnchor, constant: -70),
 
-            myLogAndPassStackView.centerYAnchor.constraint(equalTo: myContentView.centerYAnchor),
+            //myLogAndPassStackView.centerYAnchor.constraint(equalTo: myContentView.centerYAnchor),
+            myLogAndPassStackView.topAnchor.constraint(equalTo: myLogoImageView.bottomAnchor, constant: 100),
             myLogAndPassStackView.leadingAnchor.constraint(equalTo: myContentView.leadingAnchor, constant: 16),
             myLogAndPassStackView.trailingAnchor.constraint(equalTo: myContentView.trailingAnchor, constant: -16),
             myLogAndPassStackView.heightAnchor.constraint(equalToConstant: 100),

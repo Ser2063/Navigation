@@ -80,6 +80,19 @@ extension PhotosViewController: UICollectionViewDataSource {
 }
 
 // MARK: - UICollectionViewDelegate
-extension PhotosViewController: UICollectionViewDelegate {
 
+extension PhotosViewController: UICollectionViewDelegateFlowLayout {
+    private var sideInset: CGFloat {return 8} //переменная хранящая ширину отступа между элементами collectionView
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (collectionView.bounds.width - sideInset * 3) / 2
+        return CGSize(width: width, height: 150)
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        sideInset
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        <#code#>
+    }
 }

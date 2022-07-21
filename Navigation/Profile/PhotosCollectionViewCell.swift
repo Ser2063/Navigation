@@ -12,6 +12,7 @@ class PhotosCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.backgroundColor = .red
+        //contentView.layer.cornerRadius = 15
     }
 
     required init?(coder: NSCoder) {

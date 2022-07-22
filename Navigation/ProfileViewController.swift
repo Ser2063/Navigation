@@ -24,8 +24,10 @@ class ProfileViewController: UIViewController {
         //tableView.backgroundColor = .systemGray6
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(PostTabViewCell.self, forCellReuseIdentifier: String(describing: PostTabViewCell.self))  // регистрируем ячейку в таблице
 
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "DefaultCell")
+        tableView.register(PostTabViewCell.self, forCellReuseIdentifier: String(describing: PostTabViewCell.self))  // регистрируем ячейку PostTableViewCellв таблице
+        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: String(describing: PhotosTableViewCell.self)) // регистрируем ячейку PhotosTableViewCell в таблице
         return tableView
     }()
 
@@ -61,18 +63,34 @@ class ProfileViewController: UIViewController {
 extension ProfileViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        cars.count
+        self.cars.count + 1  //эта запись позволяет не съедать первую ячейку таблицы тоесть первое из четырех значений модели данных не пропадет под коллекшн вью а отобразится после него
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PhotosTableViewCell.self), for: indexPath) as? PhotosTableViewCell else {
+           let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+         return cell
+        }
+       return cell
 
-        //создание кастомной ячейки
+        } else {
 
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTabViewCell.self), for: indexPath) as! PostTabViewCell
-        cell.setupCell(modelCell: cars[indexPath.row])
-        return cell
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTabViewCell.self), for: indexPath) as? PostTabViewCell else {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "DefaultCell", for: indexPath)
+                return cell
+            }
+              cell.setupCell(modelCell: cars[indexPath.row - 1])
+               return cell
+        }
+
     }
 
+    //создание кастомной ячейки
+
+ //  let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTabViewCell.self), for: indexPath) as! PostTabViewCell
+//   cell.setupCell(modelCell: cars[indexPath.row])
+//    return cell
 
 }
 

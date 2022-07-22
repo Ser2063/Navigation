@@ -13,7 +13,7 @@ class PhotosTableViewCell: UITableViewCell {
     private let tableView: UIView = {
         let tableView = UIView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .white
+        //tableView.backgroundColor = .systemRed
         tableView.clipsToBounds = true
         tableView.layer.borderWidth = 1
         tableView.layer.borderColor = UIColor.gray.cgColor
@@ -23,30 +23,33 @@ class PhotosTableViewCell: UITableViewCell {
 
 // стак вью для размещения двух блоков верхний для стрелки и слова Фото нижний для горизонтального стаквью с 4 фотками
     private lazy var stackViewVertical: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .vertical
-        stackView.spacing = 12
-        stackView.distribution = .fillEqually
-        return stackView
+        let stackViewVertical = UIStackView()
+       // stackViewVertical.backgroundColor = .yellow
+        stackViewVertical.translatesAutoresizingMaskIntoConstraints = false
+        stackViewVertical.axis = .vertical
+        stackViewVertical.spacing = 12
+        stackViewVertical.distribution = .fillProportionally
+        return stackViewVertical
     }()
 
     // стак вью для размещения 4х фото
     private lazy var stackViewHorizontal: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.spacing = 8
-        stackView.distribution = .fillEqually
-        return stackView
+        let stackViewHorizontal = UIStackView()
+       // stackViewHorizontal.backgroundColor = .green
+        stackViewHorizontal.translatesAutoresizingMaskIntoConstraints = false
+        stackViewHorizontal.axis = .horizontal
+        stackViewHorizontal.spacing = 8
+        stackViewHorizontal.distribution = .fillEqually
+        return stackViewHorizontal
     }()
 
     private lazy var stackViewLabels: UIStackView = {
-        let stackView = UIStackView()
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.axis = .horizontal
-        stackView.distribution = .fillProportionally
-        return stackView
+        let stackViewLabels = UIStackView()
+        stackViewLabels.translatesAutoresizingMaskIntoConstraints = false
+        stackViewLabels.axis = .horizontal
+        //stackViewLabels.spacing = 10
+        stackViewLabels.distribution = .fillProportionally
+        return stackViewLabels
     }()
 
     private lazy var firstImageView: UIImageView = {
@@ -104,6 +107,8 @@ class PhotosTableViewCell: UITableViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = arrow
         imageView.clipsToBounds = true
+        imageView.contentMode = .scaleAspectFit
+        //imageView.backgroundColor = .red
         return imageView
     }()
 
@@ -120,14 +125,9 @@ class PhotosTableViewCell: UITableViewCell {
     private func tableLayout() {
         contentView.addSubview(tableView)
         tableView.addSubview(stackViewVertical)
-        stackViewLabels.addSubview(photosLabel)
-        stackViewLabels.addSubview(arrowImageView)
-        stackViewVertical.addSubview(stackViewLabels)
-        stackViewVertical.addSubview(stackViewHorizontal)
-        stackViewHorizontal.addSubview(firstImageView)
-        stackViewHorizontal.addSubview(secondImageView)
-        stackViewHorizontal.addSubview(thirdImageView)
-        stackViewHorizontal.addSubview(fourthImageView)
+        [photosLabel, arrowImageView].forEach {stackViewLabels.addArrangedSubview($0)}
+        [firstImageView, secondImageView, thirdImageView, fourthImageView].forEach {stackViewHorizontal.addArrangedSubview($0)}
+        [stackViewLabels, stackViewHorizontal].forEach {stackViewVertical.addArrangedSubview($0)}
 
 
         NSLayoutConstraint.activate([
@@ -136,18 +136,25 @@ class PhotosTableViewCell: UITableViewCell {
             tableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 0),
             tableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 0),
             tableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
-            tableView.heightAnchor.constraint(equalToConstant: 140),
+            tableView.heightAnchor.constraint(equalToConstant: 164),
 
             stackViewVertical.topAnchor.constraint(equalTo: tableView.topAnchor, constant: 12),
             stackViewVertical.leadingAnchor.constraint(equalTo: tableView.leadingAnchor, constant: 12),
             stackViewVertical.trailingAnchor.constraint(equalTo: tableView.trailingAnchor, constant: -12),
             stackViewVertical.bottomAnchor.constraint(equalTo: tableView.bottomAnchor, constant: -12),
-            //stackViewVertical.heightAnchor.constraint(equalToConstant: 40),
+           // stackViewVertical.heightAnchor.constraint(equalToConstant: 140),
 
-            arrowImageView.heightAnchor.constraint(equalTo: arrowImageView.widthAnchor, multiplier: 0.8),
-            arrowImageView.widthAnchor.constraint(equalTo: arrowImageView.heightAnchor, multiplier: 1),
-            stackViewLabels.heightAnchor.constraint(equalToConstant: 12)
+            stackViewLabels.topAnchor.constraint(equalTo: stackViewVertical.topAnchor, constant: 0),
+            stackViewLabels.leadingAnchor.constraint(equalTo: stackViewVertical.leadingAnchor, constant: 0),
+            stackViewLabels.trailingAnchor.constraint(equalTo: stackViewVertical.trailingAnchor, constant: 0),
+            stackViewLabels.bottomAnchor.constraint(equalTo: stackViewHorizontal.topAnchor, constant: 0),
+            stackViewLabels.heightAnchor.constraint(equalToConstant: 40),
 
+            stackViewHorizontal.topAnchor.constraint(equalTo: stackViewLabels.bottomAnchor, constant: 0),
+            stackViewHorizontal.leadingAnchor.constraint(equalTo: stackViewVertical.leadingAnchor, constant: 0),
+            stackViewHorizontal.trailingAnchor.constraint(equalTo: stackViewVertical.trailingAnchor, constant: 0),
+            stackViewHorizontal.bottomAnchor.constraint(equalTo: stackViewVertical.bottomAnchor, constant: 0),
+            stackViewHorizontal.heightAnchor.constraint(equalToConstant: 100)
         ])
 
     }

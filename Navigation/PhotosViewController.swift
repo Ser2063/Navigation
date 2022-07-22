@@ -13,7 +13,7 @@ class PhotosViewController: UIViewController {
 // не создаем модель для collectionView а просто делаем массив
     private var collectionViewArray: [Int] {
         var collectionViewArray = [Int]()
-        for element in 0...30 {
+        for element in 0...20 {
             collectionViewArray.append(element)
         }
         return collectionViewArray
@@ -23,7 +23,9 @@ class PhotosViewController: UIViewController {
 // инициализируем коллекшн вью
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
         collectionView.translatesAutoresizingMaskIntoConstraints =  false
         collectionView.backgroundColor = .systemGray2
 // подписываемся под протокол дата сорса
@@ -51,16 +53,6 @@ class PhotosViewController: UIViewController {
         ])
 
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 }
 
 // MARK: - UICollectionViewDataSource
@@ -76,7 +68,6 @@ extension PhotosViewController: UICollectionViewDataSource {
         return cell
     }
 
-
 }
 
 // MARK: - UICollectionViewDelegate
@@ -85,14 +76,19 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
     private var sideInset: CGFloat {return 8} //переменная хранящая ширину отступа между элементами collectionView
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.bounds.width - sideInset * 3) / 2
-        return CGSize(width: width, height: 150)
+        let width = (collectionView.bounds.width - sideInset * 4) / 3  // Расчитываем размер наших ячеек. Получили ширину экрана. Вычли 4 отступа и поделили на 3 пропорциональные части
+        return CGSize(width: width, height: width)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         sideInset
     }
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        <#code#>
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        sideInset
+    }
+
+// метод описывает то как ячейка будет вести себя в пространстве
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        UIEdgeInsets(top: sideInset, left: sideInset, bottom: sideInset, right: sideInset)
     }
 }

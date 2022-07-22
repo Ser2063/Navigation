@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0827F791288B04B9002B09CF /* DetailPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0827F790288B04B9002B09CF /* DetailPhotoViewController.swift */; };
 		0847AD02283BCEF500CBCD84 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0847AD01283BCEF500CBCD84 /* LogInViewController.swift */; };
 		084FDA1B27E66F02005E3105 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084FDA1A27E66F02005E3105 /* FeedViewController.swift */; };
 		084FDA1D27E66F22005E3105 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 084FDA1C27E66F22005E3105 /* ProfileViewController.swift */; };
@@ -29,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0827F790288B04B9002B09CF /* DetailPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailPhotoViewController.swift; sourceTree = "<group>"; };
 		0847AD01283BCEF500CBCD84 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		084FDA1A27E66F02005E3105 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		084FDA1C27E66F22005E3105 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				084FDA2227E67009005E3105 /* InfoViewController.swift */,
 				0847AD01283BCEF500CBCD84 /* LogInViewController.swift */,
 				084FDA1C27E66F22005E3105 /* ProfileViewController.swift */,
+				0827F790288B04B9002B09CF /* DetailPhotoViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 				0853D5042842CED3004A2399 /* PostTabelViewCell.swift in Sources */,
 				08633FC32885B01E00D190DB /* PhotosViewController+Extension.swift in Sources */,
 				0853D50928450A79004A2399 /* Post.swift in Sources */,
+				0827F791288B04B9002B09CF /* DetailPhotoViewController.swift in Sources */,
 				084FDA2127E66FF1005E3105 /* PostViewController.swift in Sources */,
 				0885BBDA27E4CC8800AAA9F8 /* AppDelegate.swift in Sources */,
 				08633FBF2873359D00D190DB /* UiView+Extention.swift in Sources */,

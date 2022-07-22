@@ -32,6 +32,7 @@ class ProfileViewController: UIViewController {
     }()
 
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // view.backgroundColor = .red
@@ -57,6 +58,7 @@ class ProfileViewController: UIViewController {
         ])
 
     }
+
 
 }
 
@@ -86,12 +88,6 @@ extension ProfileViewController: UITableViewDataSource {
 
     }
 
-    //создание кастомной ячейки
-
- //  let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: PostTabViewCell.self), for: indexPath) as! PostTabViewCell
-//   cell.setupCell(modelCell: cars[indexPath.row])
-//    return cell
-
 }
 
 extension ProfileViewController: UITableViewDelegate {
@@ -107,6 +103,14 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         280
     }
+
+    // при нажатии по ячейке происходит переход на PhotosViewController
+    func tableView( _ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.row == 0 {
+        self.navigationController?.pushViewController(PhotosViewController(), animated: true)
+        } else { return }
+    }
+
 }
 
 

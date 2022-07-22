@@ -108,7 +108,7 @@ class PhotosTableViewCell: UITableViewCell {
         imageView.image = arrow
         imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFit
-        //imageView.backgroundColor = .red
+         //imageView.backgroundColor = .red
         return imageView
     }()
 
@@ -158,4 +158,6 @@ class PhotosTableViewCell: UITableViewCell {
         ])
 
     }
+
+   
 }

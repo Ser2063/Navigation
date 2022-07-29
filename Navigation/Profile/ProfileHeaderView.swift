@@ -22,7 +22,7 @@ class ProfileHeaderView: UIView {
     private var statusText: String = ""
     private var status: String = ""
 
-    private let avatarImageView: UIImageView = {
+     let avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         avatarImageView.image = UIImage(named: "IMG_5935.jpeg")
@@ -84,7 +84,7 @@ class ProfileHeaderView: UIView {
 
 //анимация
 
-    private var avatarView: UIView = {
+     var avatarView: UIView = {
     let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .systemRed
@@ -96,17 +96,17 @@ class ProfileHeaderView: UIView {
     }()
     
 //анимация
-    private var alphaView: UIView = {
+     var alphaView: UIView = {
     let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        //view.backgroundColor = .white
-        view.backgroundColor = .systemGreen
+        view.backgroundColor = .systemGray
+        //view.backgroundColor = .systemGreen
         view.alpha = 0
         return view
     }()
 
 //анимация
-    private var closeButton: UIButton = {
+     var closeButton: UIButton = {
         let button = UIButton()
         button.layer.cornerRadius = 20
         button.clipsToBounds = true
@@ -117,17 +117,16 @@ class ProfileHeaderView: UIView {
     }()
 
 //анимация
-    private let tapGestureRecognizer = UITapGestureRecognizer()
-    private var avatarViewHeightConstaint = NSLayoutConstraint()
-    private var avatarViewWidhtConstaint = NSLayoutConstraint()
-    private var avatarViewTopConstaint = NSLayoutConstraint()
-    private var avatarViewLeadingConstaint = NSLayoutConstraint()
+     let tapGestureRecognizer = UITapGestureRecognizer()
+     var avatarViewHeightConstaint = NSLayoutConstraint()
+     var avatarViewWidhtConstaint = NSLayoutConstraint()
+     var avatarViewTopConstaint = NSLayoutConstraint()
+     var avatarViewLeadingConstaint = NSLayoutConstraint()
 
-
+    var alphaViewBottomConstaint = NSLayoutConstraint()
 
 
     func profileHeaderViewLayouts() {
-
 
 
         addSubview(setStatusButton)
@@ -137,17 +136,20 @@ class ProfileHeaderView: UIView {
         addSubview(statusTextField)
 
 //анимация
-        addSubview(avatarView)
-        avatarView.addSubview(avatarImageView)
 
         addSubview(alphaView)
         addSubview(closeButton)
+
+        addSubview(avatarView)
+        avatarView.addSubview(avatarImageView)
+
 
         avatarViewTopConstaint = avatarView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 16)
         avatarViewLeadingConstaint = avatarView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16)
         avatarViewHeightConstaint = avatarView.heightAnchor.constraint(equalToConstant: 150)
         avatarViewWidhtConstaint = avatarView.widthAnchor.constraint(equalToConstant: 150)
 
+        alphaViewBottomConstaint = alphaView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: 0)
 
         NSLayoutConstraint.activate([
             avatarViewTopConstaint,
@@ -155,34 +157,35 @@ class ProfileHeaderView: UIView {
             avatarViewHeightConstaint,
             avatarViewWidhtConstaint,
 
-
             avatarImageView.topAnchor.constraint(equalTo: avatarView.topAnchor),
             avatarImageView.bottomAnchor.constraint(equalTo: avatarView.bottomAnchor),
             avatarImageView.leadingAnchor.constraint(equalTo: avatarView.leadingAnchor),
             avatarImageView.trailingAnchor.constraint(equalTo: avatarView.trailingAnchor),
 
             fullNameLabel.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 27),
-            fullNameLabel.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor,constant: 16),
+            fullNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor,constant: 166),
             fullNameLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
 
-            statusLabel.bottomAnchor.constraint(equalTo: avatarView.bottomAnchor, constant: -16),
-            statusLabel.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 16),
+            statusLabel.topAnchor.constraint(equalTo: fullNameLabel.bottomAnchor, constant: 85),
+           // statusLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 185),
+            statusLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIScreen.main.bounds.width/2.1),
             statusLabel.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
 
 
-            statusTextField.topAnchor.constraint(equalTo: avatarView.bottomAnchor, constant: -10),
-            statusTextField.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 16),
+            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 5),
+            statusTextField.leadingAnchor.constraint(equalTo: leadingAnchor, constant: UIScreen.main.bounds.width/2.1),
             statusTextField.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
-            statusTextField.widthAnchor.constraint(equalToConstant: 200),
+           // statusTextField.widthAnchor.constraint(equalToConstant: 200),
             statusTextField.heightAnchor.constraint(equalToConstant: 40),
 
-            setStatusButton.topAnchor.constraint(equalTo: avatarView.bottomAnchor, constant: 40),
+            setStatusButton.topAnchor.constraint(equalTo: statusTextField.bottomAnchor, constant: 10),
             setStatusButton.leadingAnchor.constraint(equalTo: safeAreaLayoutGuide.leadingAnchor, constant: 16),
             setStatusButton.trailingAnchor.constraint(equalTo: safeAreaLayoutGuide.trailingAnchor, constant: -16),
             setStatusButton.heightAnchor.constraint(equalToConstant: 50),
 
             alphaView.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor),
-            alphaView.bottomAnchor.constraint(equalTo: bottomAnchor),
+            alphaViewBottomConstaint,
+            //alphaView.bottomAnchor.constraint(equalTo: bottomAnchor),
             alphaView.leadingAnchor.constraint(equalTo: leadingAnchor),
             alphaView.trailingAnchor.constraint(equalTo: trailingAnchor),
 

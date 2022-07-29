@@ -31,14 +31,16 @@ class ProfileViewController: UIViewController {
         return tableView
     }()
 
-
+    private let tapGestureRecognizer = UITapGestureRecognizer()  //анимация
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // view.backgroundColor = .red
         tableLayout()
-    //    setupGesture() //анимация
-    //    setupCloseButtonGesture() //анимация
+        setupGesture() //анимация
+        setupCloseButtonGesture() //анимация
+
+
     }
 
     private func tableLayout() {
@@ -60,32 +62,35 @@ class ProfileViewController: UIViewController {
         ])
 
     }
-/*
+
 //анимация
+
+// private let tapGestureRecognizer = UITapGestureRecognizer()
 
     private func setupGesture(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
-        avatarView.addGestureRecognizer(tapGesture)
+        profileHeaderView.avatarView.addGestureRecognizer(tapGesture)
     }
 
 
     @objc private func tapAction(){
 
-        if alphaView.alpha == 0 {
+        if profileHeaderView.alphaView.alpha == 0 {
 
         UIView.animate(withDuration: 0.3,
                        delay: 0,
                        //usingSpringWithDamping: 0.7,
                       // initialSpringVelocity: 0.3,
                        options: .curveLinear) {
-            self.avatarViewLeadingConstaint.constant = 1
-            self.avatarViewWidhtConstaint.constant = UIScreen.main.bounds.width - 1
-            self.avatarViewHeightConstaint.constant = UIScreen.main.bounds.height - 250
+            self.profileHeaderView.avatarViewLeadingConstaint.constant = 1
+            self.profileHeaderView.avatarViewWidhtConstaint.constant = UIScreen.main.bounds.width - 1
+            self.profileHeaderView.avatarViewHeightConstaint.constant = UIScreen.main.bounds.height - 250
            // self.avatarViewBottomConstaint.constant = UIScreen.main.bounds.height - 16
-            self.avatarViewTopConstaint.constant = 70
-    self.avatarView.layer.cornerRadius = 0.0
-            self.alphaView.alpha = 0.5
-            self.closeButton.alpha = 1
+            self.profileHeaderView.avatarViewTopConstaint.constant = 70
+            self.profileHeaderView.avatarView.layer.cornerRadius = 0.0
+            self.profileHeaderView.alphaViewBottomConstaint.constant = UIScreen.main.bounds.height
+            self.profileHeaderView.alphaView.alpha = 0.8
+            self.profileHeaderView.closeButton.alpha = 1
             self.view.layoutIfNeeded()
         } completion: { _ in
           /*  UIView.animate(withDuration: 0.3,
@@ -104,13 +109,13 @@ class ProfileViewController: UIViewController {
         UIView.animate(withDuration: 0.3,
                        delay: 0,
                        options: .curveLinear) {
-            self.avatarViewTopConstaint.constant = 16
-            self.avatarViewLeadingConstaint.constant = 16
-            self.avatarViewHeightConstaint.constant = 150
-            self.avatarViewWidhtConstaint.constant = 150
-            self.avatarView.layer.cornerRadius = 75
-            self.alphaView.alpha = 0
-            self.closeButton.alpha = 0
+            self.profileHeaderView.avatarViewTopConstaint.constant = 16
+            self.profileHeaderView.avatarViewLeadingConstaint.constant = 16
+            self.profileHeaderView.avatarViewHeightConstaint.constant = 150
+            self.profileHeaderView.avatarViewWidhtConstaint.constant = 150
+            self.profileHeaderView.avatarView.layer.cornerRadius = 75
+            self.profileHeaderView.alphaView.alpha = 0
+            self.profileHeaderView.closeButton.alpha = 0
             self.view.layoutIfNeeded()
         }
 
@@ -119,7 +124,7 @@ class ProfileViewController: UIViewController {
 
     private func setupCloseButtonGesture(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapCloseButtonAction))
-        closeButton.addGestureRecognizer(tapGesture)
+            profileHeaderView.closeButton.addGestureRecognizer(tapGesture)
 
     }
 
@@ -127,20 +132,18 @@ class ProfileViewController: UIViewController {
             UIView.animate(withDuration: 0.3,
                            delay: 0,
                            options: .curveLinear) {
-                self.avatarViewTopConstaint.constant = 16
-                self.avatarViewLeadingConstaint.constant = 16
-                self.avatarViewHeightConstaint.constant = 150
-                self.avatarViewWidhtConstaint.constant = 150
-                self.avatarView.layer.cornerRadius = 75
-                self.alphaView.alpha = 0
-                self.closeButton.alpha = 0
+                self.profileHeaderView.avatarViewTopConstaint.constant = 16
+                self.profileHeaderView.avatarViewLeadingConstaint.constant = 16
+                self.profileHeaderView.avatarViewHeightConstaint.constant = 150
+                self.profileHeaderView.avatarViewWidhtConstaint.constant = 150
+                self.profileHeaderView.avatarView.layer.cornerRadius = 75
+                self.profileHeaderView.alphaView.alpha = 0
+                self.profileHeaderView.closeButton.alpha = 0
                 self.view.layoutIfNeeded()
             }
     }
 
 //анимация
-*/
-
 
 }
 

@@ -10,7 +10,7 @@ import UIKit
 class PhotosTableViewCell: UITableViewCell {
 
 
-    private let tableView: UIView = {
+     let tableView: UIView = {
         let tableView = UIView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         //tableView.backgroundColor = .systemRed
@@ -22,7 +22,7 @@ class PhotosTableViewCell: UITableViewCell {
     }()
 
 // стак вью для размещения двух блоков верхний для стрелки и слова Фото нижний для горизонтального стаквью с 4 фотками
-    private lazy var stackViewVertical: UIStackView = {
+     lazy var stackViewVertical: UIStackView = {
         let stackViewVertical = UIStackView()
        // stackViewVertical.backgroundColor = .yellow
         stackViewVertical.translatesAutoresizingMaskIntoConstraints = false
@@ -33,7 +33,7 @@ class PhotosTableViewCell: UITableViewCell {
     }()
 
     // стак вью для размещения 4х фото
-    private lazy var stackViewHorizontal: UIStackView = {
+     lazy var stackViewHorizontal: UIStackView = {
         let stackViewHorizontal = UIStackView()
        // stackViewHorizontal.backgroundColor = .green
         stackViewHorizontal.translatesAutoresizingMaskIntoConstraints = false
@@ -43,7 +43,7 @@ class PhotosTableViewCell: UITableViewCell {
         return stackViewHorizontal
     }()
 
-    private lazy var stackViewLabels: UIStackView = {
+     lazy var stackViewLabels: UIStackView = {
         let stackViewLabels = UIStackView()
         stackViewLabels.translatesAutoresizingMaskIntoConstraints = false
         stackViewLabels.axis = .horizontal
@@ -52,7 +52,7 @@ class PhotosTableViewCell: UITableViewCell {
         return stackViewLabels
     }()
 
-    private lazy var firstImageView: UIImageView = {
+     lazy var firstImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
@@ -62,7 +62,7 @@ class PhotosTableViewCell: UITableViewCell {
         return imageView
     }()
 
-    private lazy var secondImageView: UIImageView = {
+     lazy var secondImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
@@ -72,7 +72,7 @@ class PhotosTableViewCell: UITableViewCell {
         return imageView
     }()
 
-    private lazy var thirdImageView: UIImageView = {
+     lazy var thirdImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
@@ -82,7 +82,7 @@ class PhotosTableViewCell: UITableViewCell {
         return imageView
     }()
 
-    private lazy var fourthImageView: UIImageView = {
+     lazy var fourthImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
@@ -92,7 +92,7 @@ class PhotosTableViewCell: UITableViewCell {
         return imageView
     }()
 
-    private lazy var photosLabel: UILabel = {
+     lazy var photosLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
@@ -101,7 +101,7 @@ class PhotosTableViewCell: UITableViewCell {
         return label
     }()
 
-    private lazy var arrowImageView: UIImageView = {
+     lazy var arrowImageView: UIImageView = {
         let arrow = UIImage(systemName: "arrow.right")?.withTintColor(.black, renderingMode: .alwaysOriginal)
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false

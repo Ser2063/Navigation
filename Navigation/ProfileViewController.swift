@@ -11,6 +11,8 @@ class ProfileViewController: UIViewController {
 
     let cars = PostModel.dataForCellsModel()
 
+    private let photosTableViewCell = PhotosTableViewCell()
+
     private lazy var profileHeaderView: ProfileHeaderView = {
         let profileHeaderView = ProfileHeaderView(frame: .zero)
         profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
@@ -79,8 +81,6 @@ class ProfileViewController: UIViewController {
 
         UIView.animate(withDuration: 0.3,
                        delay: 0,
-                       //usingSpringWithDamping: 0.7,
-                      // initialSpringVelocity: 0.3,
                        options: .curveLinear) {
             self.profileHeaderView.avatarViewLeadingConstaint.constant = 1
             self.profileHeaderView.avatarViewWidhtConstaint.constant = UIScreen.main.bounds.width - 1
@@ -91,19 +91,25 @@ class ProfileViewController: UIViewController {
             self.profileHeaderView.alphaViewBottomConstaint.constant = UIScreen.main.bounds.height
             self.profileHeaderView.alphaView.alpha = 0.8
             self.profileHeaderView.closeButton.alpha = 1
+
+
+
             self.view.layoutIfNeeded()
         } completion: { _ in
-          /*  UIView.animate(withDuration: 0.3,
-                           delay: 3,
-                           options: .curveLinear) {
-                self.avatarViewTopConstaint.constant = 16
-                self.avatarViewLeadingConstaint.constant = 16
-                self.avatarViewHeightConstaint.constant = 150
-                self.avatarViewWidhtConstaint.constant = 150
-                self.avatarView.layer.cornerRadius = 75
-                self.alphaView.alpha = 0
-                self.closeButton.alpha = 0
-                self.view.layoutIfNeeded() */
+            self.photosTableViewCell.tableView.isUserInteractionEnabled = false
+            self.photosTableViewCell.firstImageView.isUserInteractionEnabled = false
+            self.photosTableViewCell.secondImageView.isUserInteractionEnabled = false
+            self.photosTableViewCell.thirdImageView.isUserInteractionEnabled = false
+            self.photosTableViewCell.fourthImageView.isUserInteractionEnabled = false
+            self.photosTableViewCell.arrowImageView.isUserInteractionEnabled = false
+            self.photosTableViewCell.photosLabel.isUserInteractionEnabled = false
+            self.photosTableViewCell.stackViewVertical.isUserInteractionEnabled = false
+            self.photosTableViewCell.stackViewHorizontal.isUserInteractionEnabled = false
+            self.photosTableViewCell.stackViewLabels.isUserInteractionEnabled = false
+          //  self.tableView.isUserInteractionEnabled = false
+
+           // self.profileHeaderView.closeButton.isUserInteractionEnabled = true
+          //  self.profileHeaderView.avatarView.isUserInteractionEnabled = true
         }
         } else {
         UIView.animate(withDuration: 0.3,
@@ -117,6 +123,8 @@ class ProfileViewController: UIViewController {
             self.profileHeaderView.alphaView.alpha = 0
             self.profileHeaderView.closeButton.alpha = 0
             self.view.layoutIfNeeded()
+
+
         }
 
         }

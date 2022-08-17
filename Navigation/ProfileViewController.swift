@@ -106,6 +106,7 @@ class ProfileViewController: UIViewController {
             self.photosTableViewCell.stackViewVertical.isUserInteractionEnabled = false
             self.photosTableViewCell.stackViewHorizontal.isUserInteractionEnabled = false
             self.photosTableViewCell.stackViewLabels.isUserInteractionEnabled = false
+
           //  self.tableView.isUserInteractionEnabled = false
 
            // self.profileHeaderView.closeButton.isUserInteractionEnabled = true
@@ -205,5 +206,13 @@ extension ProfileViewController: UITableViewDelegate {
     }
 
 }
+
+extension ProfileViewController: UIGestureRecognizerDelegate {
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        gestureRecognizer.profileHeaderView.avatarView == touch.profileHeaderView.avatarView
+        }
+}
+
 
 

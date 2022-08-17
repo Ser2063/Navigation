@@ -114,3 +114,5 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
         UIEdgeInsets(top: sideInset, left: sideInset, bottom: sideInset, right: sideInset)
     }
 }
+
+

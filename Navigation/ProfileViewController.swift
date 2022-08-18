@@ -7,13 +7,13 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController  {
 
     let cars = PostModel.dataForCellsModel()
 
     private let photosTableViewCell = PhotosTableViewCell()
 
-    private lazy var profileHeaderView: ProfileHeaderView = {
+    lazy var profileHeaderView: ProfileHeaderView = {
         let profileHeaderView = ProfileHeaderView(frame: .zero)
         profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -33,7 +33,7 @@ class ProfileViewController: UIViewController {
         return tableView
     }()
 
-    private let tapGestureRecognizer = UITapGestureRecognizer()  //анимация
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,15 +67,14 @@ class ProfileViewController: UIViewController {
 
 //анимация
 
-// private let tapGestureRecognizer = UITapGestureRecognizer()
+//let tapGestureRecognizer = UITapGestureRecognizer()
 
-    private func setupGesture(){
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+     func setupGesture(){
+         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
         profileHeaderView.avatarView.addGestureRecognizer(tapGesture)
     }
 
-
-    @objc private func tapAction(){
+    @objc func tapAction(_ sender: UITapGestureRecognizer? = nil) {
 
         if profileHeaderView.alphaView.alpha == 0 {
 
@@ -91,26 +90,28 @@ class ProfileViewController: UIViewController {
             self.profileHeaderView.alphaViewBottomConstaint.constant = UIScreen.main.bounds.height
             self.profileHeaderView.alphaView.alpha = 0.8
             self.profileHeaderView.closeButton.alpha = 1
-
-
-
             self.view.layoutIfNeeded()
+
+
         } completion: { _ in
-            self.photosTableViewCell.tableView.isUserInteractionEnabled = false
-            self.photosTableViewCell.firstImageView.isUserInteractionEnabled = false
-            self.photosTableViewCell.secondImageView.isUserInteractionEnabled = false
-            self.photosTableViewCell.thirdImageView.isUserInteractionEnabled = false
-            self.photosTableViewCell.fourthImageView.isUserInteractionEnabled = false
-            self.photosTableViewCell.arrowImageView.isUserInteractionEnabled = false
-            self.photosTableViewCell.photosLabel.isUserInteractionEnabled = false
-            self.photosTableViewCell.stackViewVertical.isUserInteractionEnabled = false
-            self.photosTableViewCell.stackViewHorizontal.isUserInteractionEnabled = false
-            self.photosTableViewCell.stackViewLabels.isUserInteractionEnabled = false
+          //  self.photosTableViewCell.tableView.isUserInteractionEnabled = false
+           // self.photosTableViewCell.firstImageView.isUserInteractionEnabled = false
+          //  self.photosTableViewCell.secondImageView.isUserInteractionEnabled = false
+           // self.photosTableViewCell.thirdImageView.isUserInteractionEnabled = false
+           // self.photosTableViewCell.fourthImageView.isUserInteractionEnabled = false
+          //  self.photosTableViewCell.arrowImageView.isUserInteractionEnabled = false
+           // self.photosTableViewCell.photosLabel.isUserInteractionEnabled = false
+          //  self.photosTableViewCell.stackViewVertical.isUserInteractionEnabled = false
+          //  self.photosTableViewCell.stackViewHorizontal.isUserInteractionEnabled = false
+          //  self.photosTableViewCell.stackViewLabels.isUserInteractionEnabled = false
 
-          //  self.tableView.isUserInteractionEnabled = false
+          //   self.tableView.isUserInteractionEnabled = false
+          //  self.profileHeaderView.avatarImageView.isUserInteractionEnabled = true
+           // self.profileHeaderView.isUserInteractionEnabled = true
+            self.profileHeaderView.closeButton.isUserInteractionEnabled = true
+            self.profileHeaderView.avatarView.isUserInteractionEnabled = true
+            self.profileHeaderView.avatarImageView.isUserInteractionEnabled = true
 
-           // self.profileHeaderView.closeButton.isUserInteractionEnabled = true
-          //  self.profileHeaderView.avatarView.isUserInteractionEnabled = true
         }
         } else {
         UIView.animate(withDuration: 0.3,
@@ -126,10 +127,12 @@ class ProfileViewController: UIViewController {
             self.view.layoutIfNeeded()
 
 
+
         }
 
         }
 }
+
 
     private func setupCloseButtonGesture(){
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapCloseButtonAction))
@@ -152,6 +155,8 @@ class ProfileViewController: UIViewController {
             }
     }
 
+
+    
 //анимация
 
 }
@@ -207,12 +212,16 @@ extension ProfileViewController: UITableViewDelegate {
 
 }
 
+/*
 extension ProfileViewController: UIGestureRecognizerDelegate {
 
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-        gestureRecognizer.profileHeaderView.avatarView == touch.profileHeaderView.avatarView
+
+        gestureRecognizer.view == touch.view
+
         }
 }
 
+*/
 
 

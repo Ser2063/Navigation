@@ -43,6 +43,7 @@ class ProfileViewController: UIViewController  {
         setupCloseButtonGesture() //анимация
 
 
+
     }
 
     private func tableLayout() {
@@ -74,7 +75,7 @@ class ProfileViewController: UIViewController  {
         profileHeaderView.avatarView.addGestureRecognizer(tapGesture)
     }
 
-    @objc func tapAction(_ sender: UITapGestureRecognizer? = nil) {
+    @objc func tapAction(_ sender: UITapGestureRecognizer? = nil, event: UIEvent?) {
 
         if profileHeaderView.alphaView.alpha == 0 {
 
@@ -91,7 +92,6 @@ class ProfileViewController: UIViewController  {
             self.profileHeaderView.alphaView.alpha = 0.8
             self.profileHeaderView.closeButton.alpha = 1
             self.view.layoutIfNeeded()
-
 
         } completion: { _ in
           //  self.photosTableViewCell.tableView.isUserInteractionEnabled = false
@@ -112,6 +112,11 @@ class ProfileViewController: UIViewController  {
             self.profileHeaderView.avatarView.isUserInteractionEnabled = true
             self.profileHeaderView.avatarImageView.isUserInteractionEnabled = true
 
+            //self.tableView.resignFirstResponder()
+            self.profileHeaderView.avatarView.becomeFirstResponder()
+            // self.profileHeaderView.avatarView.canBecomeFirstResponder = true
+            //self.profileHeaderView.avatarView.becomeFirstResponder()
+            //self.profileHeaderView.avatarImageView.becomeFirstResponder()
         }
         } else {
         UIView.animate(withDuration: 0.3,
@@ -158,6 +163,13 @@ class ProfileViewController: UIViewController  {
 
     
 //анимация
+/*
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+     print("UIViewController: touchesBegan")
+       next?.touchesBegan(touches, with: event)
+    }
+
+*/
 
 }
 
@@ -224,4 +236,12 @@ extension ProfileViewController: UIGestureRecognizerDelegate {
 
 */
 
+/*
+extension UIImageView {
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+     print("UIImageView: touchesBegan")
+       // next?.touchesBegan(touches, with: event)
+    }
+ }
 
+*/

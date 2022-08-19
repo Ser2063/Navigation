@@ -93,6 +93,13 @@ class ProfileViewController: UIViewController  {
             self.profileHeaderView.closeButton.alpha = 1
             self.view.layoutIfNeeded()
 
+
+            self.tableView.resignFirstResponder()
+            self.resignFirstResponder()
+            print( "hhhhhhh \(self.profileHeaderView.avatarView.becomeFirstResponder())")
+         //  self.profileHeaderView.avatarView.becomeFirstResponder()
+
+
         } completion: { _ in
           //  self.photosTableViewCell.tableView.isUserInteractionEnabled = false
            // self.photosTableViewCell.firstImageView.isUserInteractionEnabled = false
@@ -112,8 +119,8 @@ class ProfileViewController: UIViewController  {
             self.profileHeaderView.avatarView.isUserInteractionEnabled = true
             self.profileHeaderView.avatarImageView.isUserInteractionEnabled = true
 
-            //self.tableView.resignFirstResponder()
-            self.profileHeaderView.avatarView.becomeFirstResponder()
+         //   self.tableView.resignFirstResponder()
+         //   self.profileHeaderView.avatarView.becomeFirstResponder()
             // self.profileHeaderView.avatarView.canBecomeFirstResponder = true
             //self.profileHeaderView.avatarView.becomeFirstResponder()
             //self.profileHeaderView.avatarImageView.becomeFirstResponder()

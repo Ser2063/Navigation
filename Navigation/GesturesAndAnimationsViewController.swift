@@ -66,6 +66,7 @@ class GesturesAndAnimationsViewController: UIViewController {
         layout()
         setupGesture()
         setupCloseButtonGesture()
+        view.backgroundColor = .white
     }
     
 

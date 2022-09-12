@@ -7,11 +7,13 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController  {
 
     let cars = PostModel.dataForCellsModel()
 
-    private lazy var profileHeaderView: ProfileHeaderView = {
+    private let photosTableViewCell = PhotosTableViewCell()
+
+    lazy var profileHeaderView: ProfileHeaderView = {
         let profileHeaderView = ProfileHeaderView(frame: .zero)
         profileHeaderView.translatesAutoresizingMaskIntoConstraints = false
 
@@ -37,6 +39,11 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         // view.backgroundColor = .red
         tableLayout()
+        setupGesture() //анимация
+        setupCloseButtonGesture() //анимация
+
+
+
     }
 
     private func tableLayout() {
@@ -59,6 +66,117 @@ class ProfileViewController: UIViewController {
 
     }
 
+//анимация
+
+//let tapGestureRecognizer = UITapGestureRecognizer()
+
+     func setupGesture(){
+         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+        profileHeaderView.avatarView.addGestureRecognizer(tapGesture)
+    }
+
+    @objc func tapAction(_ sender: UITapGestureRecognizer? = nil, event: UIEvent?) {
+
+        if profileHeaderView.alphaView.alpha == 0 {
+
+        UIView.animate(withDuration: 0.3,
+                       delay: 0,
+                       options: .curveLinear) {
+            self.profileHeaderView.avatarViewLeadingConstaint.constant = 1
+            self.profileHeaderView.avatarViewWidhtConstaint.constant = UIScreen.main.bounds.width - 1
+            self.profileHeaderView.avatarViewHeightConstaint.constant = UIScreen.main.bounds.height - 250
+           // self.avatarViewBottomConstaint.constant = UIScreen.main.bounds.height - 16
+            self.profileHeaderView.avatarViewTopConstaint.constant = 70
+            self.profileHeaderView.avatarView.layer.cornerRadius = 0.0
+            self.profileHeaderView.alphaViewBottomConstaint.constant = UIScreen.main.bounds.height
+            self.profileHeaderView.alphaView.alpha = 0.8
+            self.profileHeaderView.closeButton.alpha = 1
+            self.view.layoutIfNeeded()
+
+
+            self.tableView.resignFirstResponder()
+            self.resignFirstResponder()
+            print( "hhhhhhh \(self.profileHeaderView.avatarView.becomeFirstResponder())")
+         //  self.profileHeaderView.avatarView.becomeFirstResponder()
+
+
+        } completion: { _ in
+          //  self.photosTableViewCell.tableView.isUserInteractionEnabled = false
+           // self.photosTableViewCell.firstImageView.isUserInteractionEnabled = false
+          //  self.photosTableViewCell.secondImageView.isUserInteractionEnabled = false
+           // self.photosTableViewCell.thirdImageView.isUserInteractionEnabled = false
+           // self.photosTableViewCell.fourthImageView.isUserInteractionEnabled = false
+          //  self.photosTableViewCell.arrowImageView.isUserInteractionEnabled = false
+           // self.photosTableViewCell.photosLabel.isUserInteractionEnabled = false
+          //  self.photosTableViewCell.stackViewVertical.isUserInteractionEnabled = false
+          //  self.photosTableViewCell.stackViewHorizontal.isUserInteractionEnabled = false
+          //  self.photosTableViewCell.stackViewLabels.isUserInteractionEnabled = false
+
+          //   self.tableView.isUserInteractionEnabled = false
+          //  self.profileHeaderView.avatarImageView.isUserInteractionEnabled = true
+           // self.profileHeaderView.isUserInteractionEnabled = true
+            self.profileHeaderView.closeButton.isUserInteractionEnabled = true
+            self.profileHeaderView.avatarView.isUserInteractionEnabled = true
+            self.profileHeaderView.avatarImageView.isUserInteractionEnabled = true
+
+         //   self.tableView.resignFirstResponder()
+         //   self.profileHeaderView.avatarView.becomeFirstResponder()
+            // self.profileHeaderView.avatarView.canBecomeFirstResponder = true
+            //self.profileHeaderView.avatarView.becomeFirstResponder()
+            //self.profileHeaderView.avatarImageView.becomeFirstResponder()
+        }
+        } else {
+        UIView.animate(withDuration: 0.3,
+                       delay: 0,
+                       options: .curveLinear) {
+            self.profileHeaderView.avatarViewTopConstaint.constant = 16
+            self.profileHeaderView.avatarViewLeadingConstaint.constant = 16
+            self.profileHeaderView.avatarViewHeightConstaint.constant = 150
+            self.profileHeaderView.avatarViewWidhtConstaint.constant = 150
+            self.profileHeaderView.avatarView.layer.cornerRadius = 75
+            self.profileHeaderView.alphaView.alpha = 0
+            self.profileHeaderView.closeButton.alpha = 0
+            self.view.layoutIfNeeded()
+
+
+
+        }
+
+        }
+}
+
+
+    private func setupCloseButtonGesture(){
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapCloseButtonAction))
+            profileHeaderView.closeButton.addGestureRecognizer(tapGesture)
+
+    }
+
+    @objc private func tapCloseButtonAction() {
+            UIView.animate(withDuration: 0.3,
+                           delay: 0,
+                           options: .curveLinear) {
+                self.profileHeaderView.avatarViewTopConstaint.constant = 16
+                self.profileHeaderView.avatarViewLeadingConstaint.constant = 16
+                self.profileHeaderView.avatarViewHeightConstaint.constant = 150
+                self.profileHeaderView.avatarViewWidhtConstaint.constant = 150
+                self.profileHeaderView.avatarView.layer.cornerRadius = 75
+                self.profileHeaderView.alphaView.alpha = 0
+                self.profileHeaderView.closeButton.alpha = 0
+                self.view.layoutIfNeeded()
+            }
+    }
+
+
+    
+//анимация
+/*
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+     print("UIViewController: touchesBegan")
+       next?.touchesBegan(touches, with: event)
+    }
+
+*/
 
 }
 

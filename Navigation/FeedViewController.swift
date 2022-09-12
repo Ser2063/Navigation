@@ -25,21 +25,21 @@ class FeedViewController: UIViewController {
     
     private lazy var feedButtonOne: UIButton = {
         let feedButtonOne = UIButton()
-        feedButtonOne.backgroundColor = .lightGray
+        feedButtonOne.backgroundColor = .systemGray
         feedButtonOne.translatesAutoresizingMaskIntoConstraints = false
-        feedButtonOne.setTitle("Кнопка 1", for: .normal)
+        feedButtonOne.setTitle("Жесты и анимация", for: .normal)
         feedButtonOne.setTitleColor(.white, for: .normal)
         feedButtonOne.layer.cornerRadius = 4
-        feedButtonOne.addTarget(self, action: #selector(myButtonAction), for: .touchUpInside)
+        feedButtonOne.addTarget(self, action: #selector(myButtonActionGestureAndAnimation), for: .touchUpInside)
         return feedButtonOne
     }()
 
 
     private lazy var feedButtonTwo: UIButton = {
         let feedButtonTwo = UIButton()
-        feedButtonTwo.backgroundColor = .lightGray
+        feedButtonTwo.backgroundColor = .systemGray
         feedButtonTwo.translatesAutoresizingMaskIntoConstraints = false
-        feedButtonTwo.setTitle("Кнопка 2", for: .normal)
+        feedButtonTwo.setTitle("Информация", for: .normal)
         feedButtonTwo.setTitleColor(.white, for: .normal)
         feedButtonTwo.layer.cornerRadius = 4
         feedButtonTwo.addTarget(self, action: #selector(myButtonAction), for: .touchUpInside)
@@ -55,6 +55,15 @@ class FeedViewController: UIViewController {
         myPostViewController.myTitlePost = post.title
 
     }
+
+    @objc private func myButtonActionGestureAndAnimation() {
+
+        let myGesturesAndAnimationsController = GesturesAndAnimationsViewController()
+        //переходим в PostViewController обычным способом через navigationController
+        self.navigationController?.pushViewController(myGesturesAndAnimationsController, animated: true)
+
+    }
+
 
     private func feedLayout() {
         view.addSubview(myStackView)

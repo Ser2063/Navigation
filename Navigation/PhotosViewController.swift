@@ -15,7 +15,7 @@ class PhotosViewController: UIViewController {
 
 
 // инициализируем коллекшн вью
-    private lazy var collectionView: UICollectionView = {
+     lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
 
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -114,3 +114,5 @@ extension PhotosViewController: UICollectionViewDelegateFlowLayout {
         UIEdgeInsets(top: sideInset, left: sideInset, bottom: sideInset, right: sideInset)
     }
 }
+
+

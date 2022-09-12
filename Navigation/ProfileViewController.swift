@@ -231,24 +231,4 @@ extension ProfileViewController: UITableViewDelegate {
 
 }
 
-/*
-extension ProfileViewController: UIGestureRecognizerDelegate {
 
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-
-        gestureRecognizer.view == touch.view
-
-        }
-}
-
-*/
-
-/*
-extension UIImageView {
-    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-     print("UIImageView: touchesBegan")
-       // next?.touchesBegan(touches, with: event)
-    }
- }
-
-*/
